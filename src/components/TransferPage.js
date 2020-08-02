@@ -1,49 +1,21 @@
 import React from 'react';
+// import firebase from './util/firebase';
+import Utah from './Utah';
+import Ohio from './Ohio';
 
 class TransferPage extends React.Component {
     constructor(props) {
         super(props);
+        this.state = {
+            active: true
+        }
     }
 
     render() {
         return (
             <div className="container">
-                <div className="utah">
-                    <select>
-                        <option>Utah</option>
-                    </select>
-                    <div className="numbers">
-                        <p>here is number #1 for utah</p>
-                        <p>801-555-5555</p>
-                        <p>801-667-6677</p>
-                        <p>801-888-8888</p>
-                    </div>
-                    <div>
-                        <button>New</button>
-                        <button>View</button>
-                        <button>Edit</button>
-                        <button>Delete</button>
-                        <button>Copy to other state</button>
-                    </div>
-                </div>
-                <div className="ohio">
-                    <select>
-                        <option>Ohio</option>
-                    </select>
-                    <div className="numbers">
-                        <p>here is number #1 for ohio</p>
-                        <p>330-333-3333</p>
-                        <p>330-444-4444</p>
-                        <p>330-999-9999</p>
-                    </div>
-                    <div>
-                        <button>New</button>
-                        <button>View</button>
-                        <button>Edit</button>
-                        <button>Delete</button>
-                        <button>Copy to other state</button>
-                    </div>
-                </div>
+                <Utah />
+                <Ohio />
             </div>
         )
     }

@@ -29,6 +29,12 @@
   width: 100%;
 }
 
+.numberList {
+  border: 1px solid black;
+  height: 400%;
+  width: 93%;
+}
+
 button {
   margin: 5px;
 }

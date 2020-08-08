@@ -50,3 +50,10 @@ select {
 p {
   cursor: pointer;
 }
+
+summary {
+  outline: none;
+  border: none;
+  cursor: pointer;
+}
+

@@ -1,9 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import firebase from '../util/firebase';
-import Number from './Number';
-import Form from './Form';
+import OhioNumber from './OhioNumber';
 
-export default function Ohio() {
+export default function OhioList() {
     const [title, setTitle] = useState('');
 
     const handleOnChange = (e) => {
@@ -20,6 +19,20 @@ export default function Ohio() {
         numRef2.push(newNum2);
     }
 
+    const [numList, setNumList] = useState();
+
+    useEffect(() => {
+      const numRef = firebase.database().ref("newNum2");
+      numRef.on("value", (snapshot) => {
+        const nums = snapshot.val();
+        const numList = []
+        for(let id in nums) {
+          numList.push({ id, ...nums[id] });
+        }
+        setNumList(numList);
+      });
+    },[]);
+
     return(
         <div className="ohio">
             <select>
@@ -31,7 +44,7 @@ export default function Ohio() {
                 <option disabled>Kentucky</option>
             </select>
             <ol className="numberList">
-                <Number />
+                <OhioNumber />
             </ol>
             <div>
                 <button>View</button>
@@ -39,7 +52,12 @@ export default function Ohio() {
                 <button>Delete</button>
                 <button>Copy to other state</button>
             </div>
-            <Form />
+            <div>
+                <input type="text" onChange={handleOnChange} value={title} placeholder="Name"/>
+                <input type="text" onChange={handleOnChange} value={title} placeholder="Address"/>
+                <input type="text" onChange={handleOnChange} value={title} placeholder="Number"/>
+                <button onClick={createEntry}>Add new entry</button>
+            </div>
         </div>
     )
 }
